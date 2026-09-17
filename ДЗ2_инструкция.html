@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ДЗ-2 — инструкция</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.55 'Georgia','Times New Roman',serif;color:#1a1a1a;background:#f0efec;padding:24px}
+.sheet{max-width:1000px;margin:0 auto 28px;background:#fff;padding:38px 44px;
+  border:1px solid #c9c6bf;box-shadow:0 1px 0 #dedbd4}
+h1{font-size:23px;font-weight:normal;letter-spacing:-.2px;line-height:1.25}
+h1 b{font-weight:bold}
+.meta{margin-top:6px;font-size:14px;color:#5a5852}
+hr{border:0;border-top:2px solid #1a1a1a;margin:14px 0 26px}
+h2{font-size:17px;margin:30px 0 12px;padding-bottom:5px;border-bottom:1px solid #b8b5ae;
+  font-weight:bold}
+h2 .n{display:inline-block;width:25px;height:25px;line-height:25px;text-align:center;
+  background:#1a1a1a;color:#fff;border-radius:50%;font-size:13px;margin-right:9px;
+  font-family:Arial,sans-serif;vertical-align:2px}
+h3{font-size:15px;margin:20px 0 8px;font-weight:bold}
+p{margin:9px 0}
+ul,ol{margin:9px 0 9px 24px}li{margin:5px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px}
+th,td{border:1px solid #aaa7a0;padding:5px 8px;text-align:left;vertical-align:top}
+th{background:#e8e6e1;font-weight:bold}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.best td{background:#fdf6d8}
+.f{background:#f6f5f2;border-left:4px solid #1a1a1a;padding:12px 16px;margin:12px 0;
+  font-family:'Courier New',monospace;font-size:14px;line-height:1.75;white-space:pre-wrap}
+.f .lbl{font-family:Georgia,serif;font-style:italic;color:#5a5852;font-size:13px}
+code,pre{font-family:'Courier New',monospace}
+pre{background:#1e1e1c;color:#e8e6e1;padding:14px 16px;font-size:12.7px;line-height:1.6;
+  overflow-x:auto;margin:10px 0;border-radius:2px}
+pre .c{color:#8a887f}
+.callout{background:#fff;border:1px solid #aaa7a0;padding:14px;margin:14px 0}
+.legend{font-size:13.5px;margin-top:10px}
+.legend table{margin:0}
+.legend td:first-child{width:34px;text-align:center;font-weight:bold;font-family:Arial,sans-serif}
+.note{background:#f3f1ea;border:1px solid #c9c6bf;padding:11px 14px;margin:14px 0;font-size:14px}
+.note b{display:block;margin-bottom:3px}
+.warn{background:#fdf3e7;border-color:#d9b48a}
+.draw{background:#eef2f5;border:1px dashed #7f9bb0;padding:11px 14px;margin:11px 0;font-size:14px}
+.draw b{display:block;margin-bottom:3px}
+svg{display:block;margin:14px auto;max-width:100%;height:auto}
+.svgwrap{border:1px solid #d5d2cb;background:#fcfcfb;padding:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@page{size:A3 portrait;margin:11mm}
+@media print{
+  body{background:#fff;padding:0;font-size:10.2pt;line-height:1.42}
+  .sheet{box-shadow:none;border:0;max-width:none;padding:0;
+    column-count:2;column-gap:9mm;column-fill:auto}
+  h1{font-size:16pt;column-span:all}
+  .meta{column-span:all;font-size:9pt}
+  hr{column-span:all;margin:6px 0 10px}
+  h2{font-size:11.5pt;margin:13px 0 7px;break-after:avoid}
+  h2 .n{width:19px;height:19px;line-height:19px;font-size:10px}
+  h3{font-size:10.4pt;margin:11px 0 5px;break-after:avoid}
+  p,li{margin:5px 0}
+  table{font-size:8.6pt;break-inside:avoid}
+  th,td{padding:2.5px 4px}
+  pre{background:#fff;color:#000;border:1px solid #999;font-size:8.4pt;
+    line-height:1.4;padding:7px 9px;break-inside:avoid}
+  pre .c{color:#555}
+  .f{font-size:9pt;line-height:1.55;padding:8px 11px;break-inside:avoid}
+  .svgwrap{break-inside:avoid;padding:4px}
+  .legend{font-size:8.8pt}
+  .note,.draw,.callout{font-size:9pt;padding:7px 9px;break-inside:avoid}
+  .wide{column-span:all}
+}
+.a3hint{max-width:1000px;margin:0 auto 14px;font:13px/1.5 Georgia,serif;color:#5a5852;background:#fff;border:1px solid #c9c6bf;padding:10px 14px}
+.a3hint b{color:#1a1a1a}
+@media print{.a3hint{display:none}}
+@media(max-width:700px){.two{grid-template-columns:1fr}body{padding:10px}.sheet{padding:20px}}
+</style></head>
+<body><div class="a3hint"><b>Печать на А3:</b> Ctrl+P → размер бумаги <b>A3</b>, ориентация книжная, поля по умолчанию, фоновую графику включить. При печати текст автоматически разбивается на две колонки и заполняет лист. Этот блок на печать не выводится.</div><div class="sheet">
+
+<h1>Домашнее задание №2. <b>Сегментация зайцеобразных</b></h1>
+<div class="meta">Литвинец И.Д., ИУ5-21М · тема сохраняется из ДЗ-1: заяц, кролик, пищуха ·
+разметка CVAT · обучение YOLOv8-seg · SPA-приложение на React с моделью прямо в браузере</div>
+<hr>
+
+<h2><span class="n">0</span>Что требует задание и где это закрыто</h2>
+<table>
+<tr><th>Требование из README курса</th><th>Где выполнено</th></tr>
+<tr><td>Тема сохраняется из ДЗ-1</td><td>заяц / кролик / пищуха, те же классы</td></tr>
+<tr><td>Разметить изображения набора данных</td><td>CVAT, полигоны, раздел 2</td></tr>
+<tr><td>Обучить YOLOv8-segment не менее 4 раз</td><td>ноутбук, 4 готовые конфигурации
+e1–e4</td></tr>
+<tr><td>Преобразовать в ONNX</td><td>ноутбук, раздел 9</td></tr>
+<tr><td>SPA-приложение на React</td><td>папка react_dz1, модель выполняется в браузере</td></tr>
+<tr><td>Обновить цвета для классов и добавить подписи</td><td>labels.json — подписи на
+русском; палитра цветов уже привязана к номеру класса в renderBox.js</td></tr>
+</table>
+<div class="note"><b>Готовой разметки нет — это тоже часть задания</b>
+В отличие от картинок (их можно переиспользовать из ДЗ-1), полигоны для сегментации
+нужно нарисовать самостоятельно в CVAT. Это самая трудозатратная часть работы.</div>
+
+<h2><span class="n">1</span>Схема полного конвейера</h2>
+<div class="svgwrap"><svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg"
+ font-family="Georgia, serif" font-size="12">
+<defs><marker id="d2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+<path d="M0,0 L0,6 L7,3 z" fill="#1a1a1a"/></marker></defs>
+<rect x="18" y="26" width="150" height="56" fill="#eceae4" stroke="#1a1a1a" stroke-width="1.3"/>
+<text x="93" y="48" text-anchor="middle" font-size="11">картинки из ДЗ1</text>
+<text x="93" y="65" text-anchor="middle" font-size="11">подвыборка ~150 шт</text>
+<rect x="200" y="26" width="150" height="56" fill="#f5e6e6" stroke="#1a1a1a" stroke-width="1.6"/>
+<text x="275" y="45" text-anchor="middle" font-size="11">CVAT: разметка</text>
+<text x="275" y="62" text-anchor="middle" font-size="11">полигонами, 3 класса</text>
+<rect x="382" y="26" width="150" height="56" fill="#eceae4" stroke="#1a1a1a" stroke-width="1.3"/>
+<text x="457" y="45" text-anchor="middle" font-size="11">экспорт COCO 1.0</text>
+<text x="457" y="62" text-anchor="middle" font-size="11">instances_default.json</text>
+<rect x="564" y="10" width="180" height="88" fill="#dde6ee" stroke="#1a1a1a" stroke-width="1.8"/>
+<text x="654" y="30" text-anchor="middle" font-weight="bold" font-size="12">ОБУЧЕНИЕ (Colab)</text>
+<text x="654" y="47" text-anchor="middle" font-size="11">COCO → YOLO-seg формат</text>
+<text x="654" y="63" text-anchor="middle" font-size="11">YOLOv8-seg, 4 прогона</text>
+<text x="654" y="80" text-anchor="middle" font-size="11">выбор лучшей по mAP</text>
+<rect x="782" y="26" width="80" height="56" fill="#1a1a1a"/>
+<text x="822" y="48" text-anchor="middle" fill="#fff" font-size="11">model</text>
+<text x="822" y="64" text-anchor="middle" fill="#fff" font-size="11">.onnx</text>
+<rect x="564" y="150" width="180" height="56" fill="#f5e6e6" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="654" y="170" text-anchor="middle" font-size="11">public/model/</text>
+<text x="654" y="187" text-anchor="middle" font-size="11">React-проект</text>
+<rect x="330" y="150" width="200" height="56" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
+<text x="430" y="169" text-anchor="middle" font-size="11">onnxruntime-web</text>
+<text x="430" y="186" text-anchor="middle" font-size="11">модель работает В БРАУЗЕРЕ</text>
+<rect x="80" y="150" width="200" height="56" fill="#eceae4" stroke="#1a1a1a" stroke-width="1.3"/>
+<text x="180" y="169" text-anchor="middle" font-size="11">SPA-приложение:</text>
+<text x="180" y="186" text-anchor="middle" font-size="11">картинка + маски + подписи</text>
+<g stroke="#1a1a1a" stroke-width="1.3" fill="none" marker-end="url(#d2)">
+<line x1="168" y1="54" x2="197" y2="54"/><line x1="350" y1="54" x2="379" y2="54"/>
+<line x1="532" y1="54" x2="561" y2="54"/><line x1="744" y1="54" x2="779" y2="54"/>
+<line x1="822" y1="82" x2="822" y2="147"/><line x1="779" y1="176" x2="533" y2="176"/>
+<line x1="330" y1="176" x2="283" y2="176"/></g>
+<g font-family="Arial" font-size="12" font-weight="bold">
+<circle cx="93" cy="102" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="93" y="106" text-anchor="middle">1</text>
+<circle cx="275" cy="102" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="275" y="106" text-anchor="middle">2</text>
+<circle cx="457" cy="102" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="457" y="106" text-anchor="middle">3</text>
+<circle cx="654" cy="118" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="654" y="122" text-anchor="middle">4</text>
+<circle cx="822" cy="122" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="822" y="126" text-anchor="middle">5</text>
+<circle cx="430" cy="230" r="12" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+<text x="430" y="234" text-anchor="middle">6</text></g>
+</svg></div>
+<div class="legend"><table>
+<tr><td>1</td><td>Отбираются картинки из вашего датасета ДЗ-1 (713 изображений уже есть) —
+для разметки полигонами достаточно подвыборки, размечать все 713 вручную не нужно</td></tr>
+<tr><td>2</td><td>В CVAT рисуются полигоны вокруг каждого животного и присваивается класс</td></tr>
+<tr><td>3</td><td>Экспорт в формат COCO 1.0 — стандартный формат для сегментации,
+из него разметка конвертируется в YOLO-формат кодом в ноутбуке</td></tr>
+<tr><td>4</td><td>Четыре конфигурации YOLOv8-seg обучаются в Colab, сравниваются по mAP
+маски на тесте</td></tr>
+<tr><td>5</td><td>Лучшая модель экспортируется в ONNX</td></tr>
+<tr><td>6</td><td>Модель кладётся в React-проект и выполняется <b>прямо в браузере
+пользователя</b> через onnxruntime-web — никакого сервера с Python не нужно, в отличие
+от ДЗ-1</td></tr>
+</table></div>
+
+<h2><span class="n">2</span>Часть 1. Разметка в CVAT</h2>
+
+<h3>Сколько картинок размечать</h3>
+<p>Полигональная разметка — трудоёмкая операция, на одно изображение уходит от 30 секунд
+до пары минут в зависимости от сложности контура. Размечать все 713 изображений
+избыточно: для дообучения предобученной YOLOv8-seg на 3 близких классах достаточно
+<b>40–60 изображений на класс</b> (120–180 всего). Отберите визуально лучшие кадры —
+животное целиком в кадре, не перекрыто, контур чётко виден.</p>
+
+<h3>Шаг 1 — создание проекта</h3>
+<ol>
+<li>Перейдите на <code>app.cvat.ai</code>, войдите через Google-аккаунт (тот же способ,
+что для входа без пароля — быстрее регистрации).</li>
+<li>Projects → + → Create New Project. Название: «Зайцеобразные».</li>
+<li>Добавьте три метки типа <b>Polygon</b> в порядке, который будет использоваться
+дальше <b>везде без изменений</b>:
+<pre>0  hare     (Заяц)
+1  rabbit   (Кролик)
+2  pika     (Пищуха)</pre></li>
+</ol>
+
+<h3>Шаг 2 — создание задачи и загрузка изображений</h3>
+<p>Tasks → + → Create a new task, привязать к проекту «Зайцеобразные». Загрузите
+отобранные изображения с компьютера.</p>
+
+<h3>Шаг 3 — разметка (вручную ИЛИ с помощью SAM)</h3>
+<p><b>Вручную:</b> на боковой панели выберите инструмент <b>Polygon</b> → Shape.
+Обведите контур животного, замкните полигон, в выпадающем списке присвойте
+правильную метку. Правой кнопкой по метке — если ошиблись классом, можно
+поменять без перерисовки полигона.</p>
+<div class="note"><b>Быстрее — через SAM (Segment Anything)</b>
+Полностью автоматической разметки для этих классов не будет: детекторы CVAT
+(YOLO и подобные) предобучены на COCO, а там нет классов «заяц», «кролик»,
+«пищуха». Но есть class-agnostic сегментация по клику — SAM сама достраивает
+контур любого объекта, вам остаётся только присвоить класс.<br><br>
+Справа откройте <b>AI Tools</b> (значок волшебной палочки) → вкладка
+<b>Interactors</b> → <b>Segment Anything Model</b> → кликните внутри животного
+(точки «плюс» внутри объекта, «минус» на фоне, если контур захватил лишнее) →
+SAM предложит полигон → подтвердите и выберите метку. Быстрее ручного
+рисования обычно в 2–4 раза, доступно и в бесплатной онлайн-версии.</div>
+
+<h3>Шаг 4 — экспорт</h3>
+<ol>
+<li>Save (сохранить все изменения).</li>
+<li>Menu → Export task dataset → формат <b>COCO 1.0</b>.</li>
+<li><b>Важно для бесплатной онлайн-версии:</b> она не включает сами картинки в экспорт —
+только аннотации. Скачайте те же изображения, что размечали, и положите в одну папку
+рядом с <code>instances_default.json</code>.</li>
+<li>Загрузите папку на Google Drive — оттуда её читает ноутбук обучения.</li>
+</ol>
+
+<h2><span class="n">3</span>Часть 2. Обучение YOLOv8-seg</h2>
+<p>Откройте <code>ДЗ2_обучение_YOLO.ipynb</code> в Google Colab (Среда выполнения →
+сменить → GPU). Работает только в Colab — сегментация ощутимо тяжелее классификации
+из ДЗ-1, а Ultralytics на CPU будет обучаться часами.</p>
+
+<h3>Порядок ячеек</h3>
+<table>
+<tr><th>Раздел</th><th>Что делает</th></tr>
+<tr><td>1. Загрузка датасета</td><td>путь к папке с разметкой на Google Drive</td></tr>
+<tr><td>2. Конвертация COCO → YOLO</td><td>переводит полигоны CVAT в формат,
+понятный Ultralytics</td></tr>
+<tr><td>3. Разбиение</td><td>70/15/15 на train/val/test</td></tr>
+<tr><td>5. Конфигурация</td><td>выбор эксперимента — меняете <code>EXP</code></td></tr>
+<tr><td>6–7. Обучение и оценка</td><td>сама тренировка и подсчёт метрик на тесте</td></tr>
+<tr><td>8. Пример предсказания</td><td>картинка с маской для отчёта</td></tr>
+</table>
+<p>На каждый эксперимент: меняете <code>EXP</code> в разделе 5, выполняете разделы
+5 → 6 → 7 → 8 подряд (разделы 1–3 — один раз в начале сессии).</p>
+
+<h3>Четыре обязательные конфигурации</h3>
+<table>
+<tr><th>EXP</th><th>Модель</th><th class="num">Эпох</th><th class="num">imgsz</th>
+<th>Что проверяем</th></tr>
+<tr><td>e1_base</td><td>yolov8n-seg</td><td class="num">40</td><td class="num">640</td>
+<td>базовая конфигурация</td></tr>
+<tr><td>e2_epochs</td><td>yolov8n-seg</td><td class="num">80</td><td class="num">640</td>
+<td>вдвое больше эпох — не мешало ли короткое обучение</td></tr>
+<tr><td>e3_small</td><td>yolov8s-seg</td><td class="num">40</td><td class="num">640</td>
+<td>модель крупнее — важна ли ёмкость</td></tr>
+<tr><td>e4_imgsz</td><td>yolov8n-seg</td><td class="num">40</td><td class="num">960</td>
+<td>разрешение выше — видны ли мелкие детали лучше</td></tr>
+</table>
+
+<h3>После всех четырёх прогонов</h3>
+<p>Выполните раздел 11 — итоговая таблица покажет <code>mask_map50</code> для каждой
+конфигурации. Возьмите победителя, вернитесь к разделу 9, выставьте <code>EXP</code>
+на него и выполните экспорт в ONNX.</p>
+
+<h2><span class="n">4</span>Часть 3. React-приложение</h2>
+<p>Приложение — готовый шаблон курса, я адаптировал под ваши три класса. Полный код
+уже лежит в папке <code>react_dz1</code>, проверен синтаксически (node --check на всех
+шести JS-файлах прошёл без ошибок).</p>
+
+<h3>Структура проекта</h3>
+<pre>react_dz1/
+├── package.json          <span class="c"># зависимости: react, onnxruntime-web, opencv-js</span>
+├── craco.config.js        <span class="c"># копирует .wasm и модели в сборку</span>
+├── .gitignore
+├── public/
+│   ├── index.html
+│   └── model/              <span class="c"># СЮДА положить три .onnx-файла</span>
+└── src/
+    ├── index.js
+    ├── App.js              <span class="c"># главный компонент, заголовок адаптирован</span>
+    ├── components/
+    │   └── loader.js
+    ├── style/
+    │   ├── App.css
+    │   ├── index.css
+    │   └── loader.css
+    └── utils/
+        ├── labels.json     <span class="c"># ["Заяц","Кролик","Пищуха"] — уже готово</span>
+        ├── detect.js        <span class="c"># постобработка вывода модели</span>
+        └── renderBox.js     <span class="c"># отрисовка рамок и масок</span></pre>
+
+<h3>Что нужно доложить руками — три файла модели</h3>
+<p>В <code>public/model/</code> должны лежать <b>три</b> файла:</p>
+<table>
+<tr><th>Файл</th><th>Откуда взять</th></tr>
+<tr><td><code>model.onnx</code></td><td>ваш экспорт из ноутбука обучения (раздел 9)</td></tr>
+<tr><td><code>nms-yolov8.onnx</code></td><td>скачать по ссылке из репозитория курса —
+это фиксированный граф подавления пересекающихся рамок, обучать не нужно</td></tr>
+<tr><td><code>mask-yolov8-seg.onnx</code></td><td>аналогично — фиксированный граф
+сборки маски сегментации из прототипов</td></tr>
+</table>
+<p>Ссылки на оба вспомогательных файла — в исходном материале курса
+<code>yolov8_segment/react.md</code> (репозиторий iu5git/Deep-learning), раздел
+про <code>public/model</code>. Это готовые бинарные веса постобработки,
+не зависящие от ваших классов — их создавать самостоятельно не нужно, только скачать.</p>
+
+<h3>Если названия ваших моделей отличаются</h3>
+<p>Поправьте пути в <b>двух местах</b>: <code>craco.config.js</code> (паттерны копирования)
+и <code>src/App.js</code> (строки с <code>InferenceSession.create</code>).</p>
+
+<h3>Запуск</h3>
+<pre>cd react_dz1
+npm install
+npm start</pre>
+<p>Откроется <code>http://localhost:3000</code>. Первый запуск подгружает opencv.js
+и три ONNX-модели — на экране будет индикатор загрузки.</p>
+
+<h2><span class="n">5</span>Отличия от кода методички и зачем они</h2>
+<table>
+<tr><th>В методичке</th><th>Здесь</th><th>Почему</th></tr>
+<tr><td>классы airplane/weather_balloon/UFO</td><td>заяц/кролик/пищуха</td>
+<td>ваш вариант</td></tr>
+<tr><td>интерфейс на английском</td><td>подписи на русском</td><td>labels.json — единственное
+место, которое реально пришлось менять в логике</td></tr>
+<tr><td>data.yaml с абсолютными путями Colab по умолчанию</td><td>путь берётся
+из переменной <code>DATASET_ROOT</code></td><td>один раз меняете путь под свою
+структуру Google Drive</td></tr>
+<tr><td>обучение один раз, epochs=10 «для примера»</td><td>4 конфигурации,
+результаты в журнале</td><td>прямое требование задания</td></tr>
+</table>
+
+<h2><span class="n">6</span>Контрольные вопросы</h2>
+<h3>1. Задачи компьютерного зрения: классификация, детекция, сегментация</h3>
+<p><b>Классификация</b> (ДЗ-1) отвечает «что на изображении» — одна метка на всю картинку.
+<b>Детекция</b> отвечает «что и где» — рамки вокруг объектов с подписанным классом.
+<b>Сегментация</b> (эта работа) отвечает «какой пиксель какому объекту принадлежит» —
+маска того же размера, что и изображение. В архитектуре для сегментации нет полносвязных
+слоёв: выход обязан быть картой того же пространственного размера.</p>
+<h3>2. Архитектура YOLO, одноэтапный подход</h3>
+<p>YOLO смотрит на изображение один раз и за один проход через сеть выдаёт все рамки,
+классы и (для seg-версии) маски сразу — в отличие от двухэтапных архитектур (Faster R-CNN),
+где сначала отдельная сеть предлагает регионы, а затем второй проход их классифицирует.
+Изображение делится на сетку ячеек, к каждой ячейке привязаны anchor-рамки; сеть
+предсказывает поправки к их координатам, вероятность наличия объекта и распределение
+по классам.</p>
+<h3>3. Экспорт модели в ONNX и инференс в браузере</h3>
+<p>ONNX — открытый формат представления обученных моделей, не привязанный к конкретному
+фреймворку. Экспортированный граф можно выполнить где угодно, где есть ONNX Runtime —
+включая браузер через <code>onnxruntime-web</code>, который компилирует граф в WebAssembly
+и гоняет его на стороне клиента. Преимущество перед ДЗ-1 (Django): не нужен сервер
+с Python — модель выполняется на компьютере пользователя, снижается нагрузка на бэкенд
+и задержка сети.</p>
+
+</div></body></html>

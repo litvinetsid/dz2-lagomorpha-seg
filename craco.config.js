@@ -1,0 +1,29 @@
+// Копирует .wasm-файлы onnxruntime и наши ONNX-модели в сборку.
+// Если название вашей итоговой модели отличается от model.onnx —
+// поправьте путь во второй строке паттерна ниже.
+const CopyPlugin = require("copy-webpack-plugin");
+
+module.exports = {
+  webpack: {
+    plugins: {
+      add: [
+        new CopyPlugin({
+          patterns: [
+            { from: "node_modules/onnxruntime-web/dist/*.wasm", to: "static/js/[name][ext]" },
+            { from: './public/model/model.onnx', to: '[name][ext]' },
+            { from: './public/model/nms-yolov8.onnx', to: '[name][ext]' },
+            { from: './public/model/mask-yolov8-seg.onnx', to: '[name][ext]' }
+          ],
+        }),
+      ],
+    },
+    configure: (config) => {
+      config.resolve.fallback = {
+        fs: false,
+        path: false,
+        crypto: false,
+      };
+      return config;
+    },
+  },
+};
