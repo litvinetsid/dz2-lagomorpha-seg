@@ -2,15 +2,23 @@ import React, { useState, useRef } from "react";
 import cv from "@techstark/opencv-js";
 import { Tensor, InferenceSession } from "onnxruntime-web";
 import Loader from "./components/loader";
+import BreedCards from "./components/breedCards";
 import { detectImage } from "./utils/detect";
+import { cropDetection, findSimilarBreeds } from "./utils/clip";
+import breeds from "./utils/breeds.json";
+import labels from "./utils/labels.json";
 import "./style/App.css";
 
 // Логика компонента и постобработка — из шаблона курса (react.md),
-// адаптированы только заголовок страницы и имя модели.
+// адаптированы заголовок страницы, имя модели, а также добавлено
+// дополнительное задание: карточки разновидностей + поиск похожих CLIP.
 const App = () => {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState({ text: "Загрузка OpenCV.js", progress: null });
   const [image, setImage] = useState(null);
+  const [detections, setDetections] = useState([]);
+  const [breedResult, setBreedResult] = useState(null);
+  const [clipStatus, setClipStatus] = useState(null);
   const inputImage = useRef(null);
   const imageRef = useRef(null);
   const canvasRef = useRef(null);
@@ -45,6 +53,26 @@ const App = () => {
     setLoading(null);
   };
 
+  // Дополнительное задание: находим лучшую (самую уверенную) рамку,
+  // вырезаем её из исходного изображения и сравниваем с карточками
+  // соответствующего класса моделью CLIP.
+  const handleBreedSearch = async () => {
+    if (detections.length === 0) return;
+    const best = detections.reduce((a, b) => (b.probability > a.probability ? b : a));
+    const classId = labels.indexOf(best.label);
+    const cards = breeds.filter((b) => b.classId === classId);
+
+    setClipStatus("Загрузка CLIP: 0%");
+    try {
+      const crop = cropDetection(imageRef.current, best.bounding, modelInputShape[2]);
+      const ranked = await findSimilarBreeds(crop, cards, setClipStatus);
+      setBreedResult({ classId, ranked });
+      setClipStatus(null);
+    } catch (e) {
+      setClipStatus("Не удалось загрузить CLIP — проверьте соединение");
+    }
+  };
+
   return (
     <div className="App">
       {loading && (
@@ -70,8 +98,8 @@ const App = () => {
           src="#"
           alt=""
           style={{ display: image ? "block" : "none" }}
-          onLoad={() => {
-            detectImage(
+          onLoad={async () => {
+            const boxes = await detectImage(
               imageRef.current,
               canvasRef.current,
               session,
@@ -80,6 +108,8 @@ const App = () => {
               scoreThreshold,
               modelInputShape
             );
+            setDetections(boxes || []);
+            setBreedResult(null);
           }}
         />
         <canvas
@@ -103,6 +133,8 @@ const App = () => {
           const url = URL.createObjectURL(e.target.files[0]);
           imageRef.current.src = url;
           setImage(url);
+          setDetections([]);
+          setBreedResult(null);
         }}
       />
 
@@ -117,12 +149,21 @@ const App = () => {
               imageRef.current.src = "#";
               URL.revokeObjectURL(image);
               setImage(null);
+              setDetections([]);
+              setBreedResult(null);
             }}
           >
             Закрыть
           </button>
         )}
+        {detections.length > 0 && (
+          <button onClick={handleBreedSearch}>Определить разновидность</button>
+        )}
       </div>
+
+      {clipStatus && <p className="clip-status">{clipStatus}</p>}
+
+      <BreedCards result={breedResult} />
     </div>
   );
 };

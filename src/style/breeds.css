@@ -1,0 +1,85 @@
+.breeds {
+  width: 100%;
+  max-width: 960px;
+  margin: 24px auto 10px;
+  text-align: left;
+}
+
+.breed-group {
+  margin-bottom: 22px;
+}
+
+.breed-group h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.breed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.breed-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.breed-card.top {
+  border-color: #2c99a8;
+  border-width: 2px;
+  box-shadow: 0 0 0 2px rgba(44, 153, 168, 0.15);
+  background: #eefaf9;
+}
+
+.breed-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.breed-lat {
+  font-style: italic;
+  color: #666;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.breed-note {
+  font-size: 12.5px;
+  color: #444;
+  margin-top: 5px;
+  line-height: 1.35;
+}
+
+.breed-bar {
+  position: relative;
+  margin-top: 8px;
+  height: 8px;
+  background: #e2e2e2;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.breed-bar-fill {
+  display: block;
+  height: 100%;
+  background: #2c99a8;
+}
+
+.breed-bar-value {
+  position: absolute;
+  right: 0;
+  top: -16px;
+  font-size: 11px;
+  color: #2c99a8;
+  font-weight: bold;
+}
+
+.clip-status {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}

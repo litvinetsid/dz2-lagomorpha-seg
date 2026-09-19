@@ -27,6 +27,7 @@ const numClass = labels.length;
  * @param {Number} iouThreshold порог IoU для подавления пересекающихся рамок
  * @param {Number} scoreThreshold порог уверенности для отсечения слабых рамок
  * @param {Number[]} inputShape [batch, channels, width, height]
+ * @returns {Array[Object]} найденные рамки — нужно для доп. задания (карточки CLIP)
  */
 export const detectImage = async (
   image,
@@ -116,6 +117,10 @@ export const detectImage = async (
   renderBoxes(ctx, boxes);
 
   input.delete();
+
+  // Дополнительное задание: карточки разновидностей + CLIP используют
+  // найденные рамки (нужно знать класс и координаты лучшего обнаружения).
+  return boxes;
 };
 
 const preprocessing = (source, modelWidth, modelHeight, stride = 32) => {

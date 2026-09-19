@@ -1,8 +1,9 @@
 {
   "name": "lagomorpha-seg",
-  "homepage": "https://github.com/litvinetsid/dz2-lagomorpha-seg",
+  "homepage": "https://litvinetsid.github.io/dz2-lagomorpha-seg",
   "version": "0.1.0",
   "dependencies": {
+    "@huggingface/transformers": "^3.0.0",
     "@techstark/opencv-js": "4.5.5-release.2",
     "onnxruntime-web": "^1.14.0",
     "react": "^18.2.0",
