@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/dz2-lagomorpha-seg/static/css/main.8195ad70.css",
+    "main.js": "/dz2-lagomorpha-seg/static/js/main.f555ab40.js",
+    "static/js/397.eef9bac3.chunk.js": "/dz2-lagomorpha-seg/static/js/397.eef9bac3.chunk.js",
+    "static/js/ort-wasm-simd-threaded.jsep.wasm": "/dz2-lagomorpha-seg/static/js/ort-wasm-simd-threaded.jsep.wasm",
+    "static/media/ort-wasm-simd-threaded.jsep.wasm": "/dz2-lagomorpha-seg/static/media/ort-wasm-simd-threaded.jsep.666d0398a1e13e9c0c1d.wasm",
+    "static/js/ort-wasm-simd-threaded.asyncify.wasm": "/dz2-lagomorpha-seg/static/js/ort-wasm-simd-threaded.asyncify.wasm",
+    "static/js/ort-wasm-simd-threaded.jspi.wasm": "/dz2-lagomorpha-seg/static/js/ort-wasm-simd-threaded.jspi.wasm",
+    "static/js/ort-wasm-simd-threaded.wasm": "/dz2-lagomorpha-seg/static/js/ort-wasm-simd-threaded.wasm",
+    "model.onnx": "/dz2-lagomorpha-seg/model.onnx",
+    "static/media/ort.bundle.min.mjs": "/dz2-lagomorpha-seg/static/media/ort.bundle.min.a9fed72a07d762cad69c.mjs",
+    "mask-yolov8-seg.onnx": "/dz2-lagomorpha-seg/mask-yolov8-seg.onnx",
+    "nms-yolov8.onnx": "/dz2-lagomorpha-seg/nms-yolov8.onnx",
+    "index.html": "/dz2-lagomorpha-seg/index.html",
+    "main.8195ad70.css.map": "/dz2-lagomorpha-seg/static/css/main.8195ad70.css.map",
+    "main.f555ab40.js.map": "/dz2-lagomorpha-seg/static/js/main.f555ab40.js.map",
+    "397.eef9bac3.chunk.js.map": "/dz2-lagomorpha-seg/static/js/397.eef9bac3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8195ad70.css",
+    "static/js/main.f555ab40.js"
+  ]
+}
